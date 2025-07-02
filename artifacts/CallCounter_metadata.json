@@ -1,0 +1,84 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract ICounter",
+						"name": "_c",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "c",
+				"outputs": [
+					{
+						"internalType": "contract ICounter",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "incrementCounter",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "updateCount",
+				"outputs": [],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/InterfaceTest.sol": "CallCounter"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/InterfaceTest.sol": {
+			"keccak256": "0xa25b4230218773ad4d8d43867d90b2416c56af1790d2d4d148ffe6b7ce4b4434",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://7ae8f184544e51e7d65450738b9ebe2ee4d40499b8199749116756ca74dbae8d",
+				"dweb:/ipfs/QmYZK1oB6Tvtae7Eq4NFmRCUY3beH5rj94NknbVayncJeA"
+			]
+		}
+	},
+	"version": 1
+}

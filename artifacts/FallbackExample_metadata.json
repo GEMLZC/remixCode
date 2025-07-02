@@ -1,0 +1,81 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "functionCalled",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "Log",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/FallbackExample.sol": "FallbackExample"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/FallbackExample.sol": {
+			"keccak256": "0x1c3844efdfd97e3cd9dda11407751e72bab97f3f200bdaefac541c8668e16f0f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://fd684fa960a23924a3f68dac95ed9d89222453ed3d316931ce6b2ad29f408641",
+				"dweb:/ipfs/QmPN9hb2EqaJ9uaxabXnJPx8pWtCiVgtDDSuoLPAuLpbHd"
+			]
+		}
+	},
+	"version": 1
+}

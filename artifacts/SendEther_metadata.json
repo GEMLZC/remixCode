@@ -1,0 +1,100 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eth",
+						"type": "uint256"
+					}
+				],
+				"name": "sendByCall",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eth",
+						"type": "uint256"
+					}
+				],
+				"name": "sendBySend",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eth",
+						"type": "uint256"
+					}
+				],
+				"name": "sendByTransfer",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/SendEther.sol": "SendEther"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/SendEther.sol": {
+			"keccak256": "0x3c518d7d7380cfe1b1e0c1b625b35260abbab2e2afa931e40385ce82437ef2cf",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2c07d96d1f0d5db7f7081fb7abf722b9dfbfc3508a6239a0f2be3106c1b80a19",
+				"dweb:/ipfs/QmfU8NDq2R5sckAUwMJFEVEkizUTTSmaES3n15HQPGn8Ju"
+			]
+		}
+	},
+	"version": 1
+}
