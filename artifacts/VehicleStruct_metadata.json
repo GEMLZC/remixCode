@@ -1,0 +1,196 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "m",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "y",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "o",
+						"type": "address"
+					}
+				],
+				"name": "addCar",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "make",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "year",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							}
+						],
+						"internalType": "struct VehicleStruct.Vehicle",
+						"name": "v",
+						"type": "tuple"
+					}
+				],
+				"name": "addCar2",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "car",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "make",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "year",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "delCar",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getCar",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "make",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "year",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							}
+						],
+						"internalType": "struct VehicleStruct.Vehicle",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "y",
+						"type": "uint256"
+					}
+				],
+				"name": "updateCarYear",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "编程作业：创建⼀个Solidity智能合约，包含⼀个名为 Vehicle 的struct，具有以下属性： make (制造商，字符串类型)， year (⽣产年份，整数类型)， 和 owner (所有者，地址类型)。合约应允许 ⽤⼾： • 添加新的⻋辆到数组中。 • 访问和修改特定⻋辆的年份。 删除⻋辆记录。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/VehicleStruct.sol": "VehicleStruct"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/VehicleStruct.sol": {
+			"keccak256": "0x501f87031d4709def395459d407401a5b874c0fd2f912e91fbe472f53ee01eff",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f93ad2b7ea5d4b22ca35b98f54815a58d499fb148a5f38da7638f215e7f0e075",
+				"dweb:/ipfs/QmdQLn6NxikvaZaK8A2jkFWYNZfiLjCsHeHUuPm2jMFm2P"
+			]
+		}
+	},
+	"version": 1
+}

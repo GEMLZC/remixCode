@@ -1,0 +1,86 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getMessage",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "message",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "s",
+						"type": "string"
+					}
+				],
+				"name": "setMessage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "创建⼀个Solidity智能合约，名为 MessageStore ，包含以下功能： • ⼀个公开的状态变量 message ⽤于存储⼀个字符串。 • ⼀个 setMessage 函数，允许⽤⼾输⼊⼀个字符串并将其存储到 message 状态变量中。该函数 应使⽤calldata数据位置。 • ⼀个 getMessage 函数，返回 message 状态变量的内容。该函数应声明为external，并使⽤ memory数据位置。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/MessageStore.sol": "MessageStore"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/MessageStore.sol": {
+			"keccak256": "0x80a05136ea920eedf13baee966b8f49e54c50fee22c42a72759d08ed70f30de7",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5f3197c8646f6cf8b2067de4da8c0bbf92eda6982c12e1dc550533b83bf110be",
+				"dweb:/ipfs/QmVDX9owWQvxdPBUaA45o3pYobFALGLtadY7W4yQ4nYr8e"
+			]
+		}
+	},
+	"version": 1
+}

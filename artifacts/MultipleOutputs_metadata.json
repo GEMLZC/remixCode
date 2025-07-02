@@ -1,0 +1,99 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "captureOutputs",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "displayOutputs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "n",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "b",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "s",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "returnMultiple",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "n",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "b",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "s",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/MultipleOutputs.sol": "MultipleOutputs"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/MultipleOutputs.sol": {
+			"keccak256": "0x503046c67425570b6d35b7836cd3bd30b8d5861cec0f58183e2971cda743a7c4",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8a097de1ae3a1262dde5c8c63e6c2e6123f7002a2640ed541d63621a0434f898",
+				"dweb:/ipfs/Qma7kV4ruxgZp5wwJXnGZbyiTTPi2Jutvz18vFj6a5EGag"
+			]
+		}
+	},
+	"version": 1
+}

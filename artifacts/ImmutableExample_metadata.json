@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "addr",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/ImmutableExample.sol": "ImmutableExample"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/ImmutableExample.sol": {
+			"keccak256": "0x250c34631abb79b72500f19300d9df5297ca5e9c8368aa4fe1aadf2de462e209",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://3c51536e169cba4f741eae6adf57640c028e158e6b8d74d2371dc0c097b8965c",
+				"dweb:/ipfs/QmQ97P8T4hCmb4H9MaVD99BwA9oceXjZvN7i4FiDMcWrhH"
+			]
+		}
+	},
+	"version": 1
+}

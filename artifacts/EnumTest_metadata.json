@@ -1,0 +1,139 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "enum EnumTest.OrderStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"name": "addOrder",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getOrderStatus",
+				"outputs": [
+					{
+						"internalType": "enum EnumTest.OrderStatus",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "orders",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "enum EnumTest.OrderStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "restOrderStatus",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum EnumTest.OrderStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"name": "updateOrderStatus",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "任务：编写⼀个Solidity智能合约，实现⼀个简单的订单处理系统。 ◦ 声明⼀个名为 OrderStatus 的枚举，包括状态： None , Pending , Shipped , Completed ,Rejected , Cancelled 。 ◦ 创建⼀个结构体 Order ，包含买家地址和订单状态。 ◦ 实现功能： i. 添加新订单到数组。 ii. 更新订单状态。 iii. 获取特定订单的状态。 iv. 重置订单状态到默认值。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/EnumTest.sol": "EnumTest"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/EnumTest.sol": {
+			"keccak256": "0x7aefb0898213a0dc97f41e367f9c1fc9bddb5f71361f1970d31af238814d018f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://74d28be05ee1318fed2ee511dbe426a6698297b8d83178dbd80a68d601c5f301",
+				"dweb:/ipfs/QmdQk78vCXDkSAbKdVkLfZPZPa3mWwXm6rkRJ6dqkqRZd9"
+			]
+		}
+	},
+	"version": 1
+}

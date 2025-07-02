@@ -1,0 +1,73 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
+				"name": "Log",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "bar",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "foo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/ExtendFunc.sol": "Base"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/ExtendFunc.sol": {
+			"keccak256": "0x5cc3a72ebb22c7d83f23c20898bf6af569835060b0845526dc229bb3e351f5bc",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://466aa5dbc05f8b704aac4069b92dd7fa63149a5c122eff9eccdb602b4feb7fe7",
+				"dweb:/ipfs/QmRYhDx4kCFbPGy7qLVw48CPH122STMy8xN8kByYNBvug3"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,73 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "bar",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "foo",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "创建⼀个Solidity程序，包含三个合约：ContractA，ContractB和ContractC。 ◦ ContractA：定义两个函数 foo() 和 bar() ，返回字符串\"A\"。 ContractB：继承ContractA，重写 foo() 和 bar() ，使其返回字符串\"B\"。 ContractC：继承ContractB，只重写 bar() ，使其返回字符串\"C\"。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/Extend.sol": "ContractA"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/Extend.sol": {
+			"keccak256": "0x78509ea4ccb769d2e631d4e6c55ce363866208f64d04684c21df1d6dd501624d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://6bc4423eae31502e2bc7fed36c2e0d533ecb4d3ea34a2756926b7009c73c7b65",
+				"dweb:/ipfs/QmQLhTpvN5sG2LgextaG2PMqvy4FU7DurBRHgKGJtE5fuW"
+			]
+		}
+	},
+	"version": 1
+}
