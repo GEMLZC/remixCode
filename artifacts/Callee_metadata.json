@@ -6,25 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "caller",
-						"type": "bool"
-					},
-					{
-						"indexed": false,
-						"internalType": "bytes",
-						"name": "data",
-						"type": "bytes"
-					}
-				],
-				"name": "Log",
-				"type": "event"
-			},
-			{
 				"inputs": [],
 				"name": "num",
 				"outputs": [
@@ -40,17 +21,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "addr",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
 						"name": "_num",
 						"type": "uint256"
 					}
 				],
-				"name": "setCallerNum",
+				"name": "setNum",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -69,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/base/DelegatecallTest.sol": "Caller"
+			"contracts/base/DelegatecallTest.sol": "Callee"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},

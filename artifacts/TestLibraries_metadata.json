@@ -6,27 +6,14 @@
 	"output": {
 		"abi": [
 			{
-				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "caller",
-						"type": "bool"
-					},
-					{
-						"indexed": false,
-						"internalType": "bytes",
-						"name": "data",
-						"type": "bytes"
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
-				"name": "Log",
-				"type": "event"
-			},
-			{
-				"inputs": [],
-				"name": "num",
+				"name": "gArr",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -40,19 +27,38 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "addr",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "x",
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_num",
+						"name": "y",
 						"type": "uint256"
 					}
 				],
-				"name": "setCallerNum",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "test1",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "test2",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -69,7 +75,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/base/DelegatecallTest.sol": "Caller"
+			"contracts/base/Library.sol": "TestLibraries"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -83,12 +89,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/base/DelegatecallTest.sol": {
-			"keccak256": "0x982fb631d270754a27504844a46969fc49f7afcfeca8821838e34ee64f45f0dc",
+		"contracts/base/Library.sol": {
+			"keccak256": "0xadbb514023b63152b378c62092259933f261ce267116fc9078fa13d9b15d6ebe",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://50b0b914520fb2a58b14c2c9a1d7163dc2d069208f5c750f815511331f0033c5",
-				"dweb:/ipfs/QmdfdiPueeSNiNhyr5K8wdrBZDri17doqnusHXraCu4TFt"
+				"bzz-raw://c7be00b8bf08f902122fbd78b0191fb8f91e0231d8d0f7d22e9669587253422c",
+				"dweb:/ipfs/QmaWEQxhUE1nfT2ufkwuQUaFE5sqVSAh7Hp2Z5jzsLmzSC"
 			]
 		}
 	},
