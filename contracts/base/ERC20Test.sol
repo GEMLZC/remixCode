@@ -90,7 +90,7 @@ contract ERC20Impl is IERC20 {
 
 
         /**
-        * @dev 调⽤者账⼾给spender账⼾授权 amount数量代币。
+        * @dev 调⽤者账⼾给spender账⼾授权 amount数量代币。 (allowance[msg.sender][spender] 是从授权者角度调用的，spender是被授权者，msg.sender是授权者)
         *
         * 如果成功，返回 true.
         *
@@ -105,17 +105,18 @@ contract ERC20Impl is IERC20 {
 
         /**
         * @dev 通过授权机制，从from账⼾向to账⼾转账amount数量代币。转账的部分会从调⽤者的
-            allowance中扣除。
+            allowance中扣除。(allowance[from][msg.sender] 是从被授权者角度调用的，from是授权者，msg.sender是被授权者)
         *
         * 如果成功，返回 true.
         *
         * 释放 {Transfer} 事件.
         */
-        function transferFrom(address from, address to, uint256 amount) checkBalanceEnough(amount) override external returns (bool){
-             require(allowance[msg.sender][from] >= amount, "Allowance exceeded");
-             balanceOf[from] -= amount; //为什么还要扣减被授权者的代币? 不是应该只扣减授权者的代币吗？
+        function transferFrom(address from, address to, uint256 amount) override external returns (bool){
+             require(balanceOf[from] >= amount, "balance is not enough");
+             require(allowance[from][msg.sender] >= amount, "Allowance exceeded");
+             balanceOf[from] -= amount; 
              balanceOf[to] += amount;
-             allowance[msg.sender][from] -= amount;
+             allowance[from][msg.sender] -= amount;
              emit Transfer(from, to, amount);
              return true;
         }

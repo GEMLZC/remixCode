@@ -1,0 +1,69 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"supportsInterface(bytes4)": {
+					"notice": "作用场景： 当合约A需要调用合约B的特定功能（如转账、查询余额）时， 可先通过supportsInterface检查合约B是否支持相关接口（如ERC20、ERC721），避免调用失败。 实际应用场景 1. ​DeFi协议集成 钱包或交易所调用supportsInterface检测代币合约是否兼容ERC20，以决定是否展示余额或支持交易。 2. ​NFT市场 交易平台通过检查IERC721Receiver接口（ID：0x150b7a02），确认目标合约能否安全接收NFT，避免资产锁定。 3. ​可升级合约 代理合约在升级后，调用方需验证新逻辑合约是否支持原有接口，确保兼容性"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/ERC721Test.sol": "IERC165"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/ERC721Test.sol": {
+			"keccak256": "0x172956342b0ae7b164f93ecc0381553868cf346c4ef950ecb375b417ff584d57",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://70146ff0f63f341a2cc15b2ebc4f173d4dda58bc6a65cd61bfd7d950a4a51f96",
+				"dweb:/ipfs/QmTZHR5JB3KJBxCtHMaufWThWCoRf3akqkeQYg5dvVhy2T"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,84 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC721Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"onERC721Received(address,address,uint256,bytes)": {
+					"notice": "触发条件 当 NFT 通过 ​**safeTransferFrom** 方法（而非普通 transferFrom）转移至合约地址时， 接收方合约必须实现 onERC721Received 函数。 ​成功场景：目标合约实现该函数并返回正确值 → NFT 转账成功。 ​失败场景：未实现或返回值错误 → ​交易回滚，NFT 不会转移 若接收合约未实现此接口，NFT 转入后可能因缺乏转出逻辑而被永久锁定（如 PeopleDAO 曾因类似错误损失 4000 万代币）。 onERC721Received 通过强制验证，从协议层规避此类风险。"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/ERC721Test.sol": "IERC721Receiver"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/ERC721Test.sol": {
+			"keccak256": "0x172956342b0ae7b164f93ecc0381553868cf346c4ef950ecb375b417ff584d57",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://70146ff0f63f341a2cc15b2ebc4f173d4dda58bc6a65cd61bfd7d950a4a51f96",
+				"dweb:/ipfs/QmTZHR5JB3KJBxCtHMaufWThWCoRf3akqkeQYg5dvVhy2T"
+			]
+		}
+	},
+	"version": 1
+}
