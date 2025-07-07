@@ -330,6 +330,7 @@
 					"notice": "描述：将代币从一个地址转移到另一个地址，不检查接收者地址是否能处理 ERC721 代币 参数： _from：当前代币的拥有者地址 _to：代币将要被转移至的目标地址 _tokenId：将要被转移的代币的 ID"
 				}
 			},
+			"notice": "​授权： 单个授权：调用approve，设置单个代币的授权地址。 批量授权：调用setApprovalForAll，设置操作者的批量授权状态。 ​转账： 普通转账：调用transferFrom，直接转账，不检查接收方。 安全转账：调用safeTransferFrom（两种形式），在转账后检查接收方是否为合约且实现了onERC721Received。 ​查询： 查询余额：balanceOf 查询所有者：ownerOf 查询单个授权：getApproved 查询批量授权：通过公共映射isApprovedForAll自动生成的getter函数。",
 			"version": 1
 		}
 	},
@@ -350,11 +351,11 @@
 	},
 	"sources": {
 		"contracts/base/ERC721Test.sol": {
-			"keccak256": "0x172956342b0ae7b164f93ecc0381553868cf346c4ef950ecb375b417ff584d57",
+			"keccak256": "0xf28c9c882fe9e6d74143bea3b122a07468cddb8caf3c234e6fa1e125b2d979d3",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://70146ff0f63f341a2cc15b2ebc4f173d4dda58bc6a65cd61bfd7d950a4a51f96",
-				"dweb:/ipfs/QmTZHR5JB3KJBxCtHMaufWThWCoRf3akqkeQYg5dvVhy2T"
+				"bzz-raw://4baebcf6c38c26c9344d768d27d94e7b3990cf8090e1d68a8ea39518bdae5ba0",
+				"dweb:/ipfs/QmeqzbvpEysarFgWRR9v6dW9MVYYTBykjhqCx5BpzDMdgd"
 			]
 		}
 	},
