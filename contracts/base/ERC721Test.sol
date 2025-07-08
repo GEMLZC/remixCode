@@ -124,13 +124,137 @@ interface IERC721Receiver {
      onERC721Received 通过强制验证，从协议层规避此类风险。
     */
     function onERC721Received(
-        address operator,   // 执行转账操作的地址（用户或代理合约）
+        address operator,   // 操作者地址（如调用 safeTransferFrom 的合约）
         address from,       // NFT 转出方地址
         uint256 tokenId,    // 转移的 NFT 唯一标识
         bytes calldata data // 自定义数据（可选）
 ) external returns (bytes4);
 
 }
+
+
+
+contract ERC721_2 is IERC721{
+        //某个地址的代币
+        mapping(address => uint256) public override balanceOf;
+        //某个代币的所有者
+        mapping(uint256 => address) public override ownerOf;
+        //代币授权地址
+        mapping(uint256 => address) public _approves;
+        //授权代币地址标识
+        mapping(address => mapping(address => bool)) public override isApprovedForAll;
+
+        /**
+        作用场景：
+        当合约A需要调用合约B的特定功能（如转账、查询余额）时，
+        可先通过supportsInterface检查合约B是否支持相关接口（如ERC20、ERC721），避免调用失败。
+
+        实际应用场景
+        1. ​DeFi协议集成
+        钱包或交易所调用supportsInterface检测代币合约是否兼容ERC20，以决定是否展示余额或支持交易。
+        2. ​NFT市场
+        交易平台通过检查IERC721Receiver接口（ID：0x150b7a02），确认目标合约能否安全接收NFT，避免资产锁定。
+        3. ​可升级合约
+        代理合约在升级后，调用方需验证新逻辑合约是否支持原有接口，确保兼容性
+    */
+    function supportsInterface(bytes4 interfaceId) override  external pure  returns (bool){
+        return interfaceId == type(IERC721).interfaceId || interfaceId == type(IERC165).interfaceId ;
+    }
+
+
+    /**
+        描述：安全地将代币从一个地址转移到另一个地址，调用时会检查接收者地址是否具备处理 ERC721 代币的能力
+        参数：
+        _from：当前代币的拥有者地址
+        _to：代币将要被转移至的目标地址
+        _tokenId：将要被转移的代币的 ID
+        data：额外的数据，可能会在调用中使用
+    */
+    function safeTransferFrom(address from, address to, uint256 tokenId) override external{
+        transferFrom(from,to,tokenId);
+        require(to.code.length == 0 
+        || IERC721Receiver(to).onERC721Received(msg.sender,to,tokenId,"") == IERC721Receiver.onERC721Received.selector
+        , "safeTransferFrom fail");
+    }
+
+
+     /**
+        描述：安全地将代币从一个地址转移到另一个地址，调用时会检查接收者地址是否具备处理 ERC721 代币的能力
+        参数：
+        _from：当前代币的拥有者地址
+        _to：代币将要被转移至的目标地址
+        _tokenId：将要被转移的代币的 ID
+        data：额外的数据，可能会在调用中使用
+    */
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) override external{
+             transferFrom(from,to,tokenId);
+        require(to.code.length == 0 
+        || IERC721Receiver(to).onERC721Received(msg.sender,to,tokenId,data) == IERC721Receiver.onERC721Received.selector
+        , "safeTransferFrom fail");
+    }
+
+
+    /**
+        描述：将代币从一个地址转移到另一个地址，不检查接收者地址是否能处理 ERC721 代币
+        参数：
+        _from：当前代币的拥有者地址
+        _to：代币将要被转移至的目标地址
+        _tokenId：将要被转移的代币的 ID
+    */
+    function transferFrom(address from, address to, uint256 tokenId) override public {
+         require(from != address(0) && to != address(0), "address or toAddress zero is not");
+         require(tokenId != 0, "tokenId zero");
+         require(ownerOf[tokenId] == from, "tokenId zero");
+         //校验转账的权限
+         require(isApprovedForAll[from][msg.sender]
+            || from == msg.sender  || _approves[tokenId] == msg.sender
+         , "ERC721: transfer caller is not owner nor approved");
+         balanceOf[from]--;
+         balanceOf[to]++;
+         ownerOf[tokenId] = to;
+         delete _approves[tokenId];
+         emit Transfer(from,  to, tokenId);
+    }
+
+    /**
+    描述：授权某个地址管理特定的ERC721代币
+    参数：
+    _approved：被授权的地址
+    _tokenId：代币的唯一识别 ID
+*/
+    function approve(address to, uint256 tokenId) override external{
+        require(_approves[tokenId] != to, "ERC721: approved is already set");
+        require(ownerOf[tokenId] == msg.sender , "ERC721: approved caller is not owner nor approved for");
+        _approves[tokenId] = to;
+        emit  Approval(msg.sender, to,tokenId);
+    }
+
+    /**
+        描述：获取被授权管理特定代币的地址
+        参数：_tokenId：代币的唯一识别 ID
+        返回值：被授权的管理该代币的地址
+    */
+    function getApproved(uint256 tokenId)  override external view returns (address operator){
+        require(tokenId != 0 , "tokenId is cannt 0");
+        operator = _approves[tokenId];
+        require(operator != address(0) , "tokenId is cannt 0");
+       
+    }
+
+    /**
+        描述：将一个操作者地址设置为被批准或取消批准管理所有代币的权利
+        参数：
+        _operator：操作者的地址
+        _approved：批准或取消批准的标志
+    */
+    function setApprovalForAll(address operator, bool _approved) override external{
+        require(operator != address(0), "operator address is 0 or not set");
+        isApprovedForAll[msg.sender][operator] = _approved;
+         emit ApprovalForAll(msg.sender, operator,  _approved);
+    }
+}
+
+
 
 
 /**
@@ -191,6 +315,7 @@ contract ERC721 is  IERC721{
 
     function safeTransferFrom(address from, address to, uint256 tokenId) override external{
         transferFrom(from, to, tokenId);
+        //to.code.length == 0 判断不是合约地址
         require(to.code.length == 0 ||
         IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, "") ==
         IERC721Receiver.onERC721Received.selector,"unsafe recipient");
@@ -224,6 +349,7 @@ contract ERC721 is  IERC721{
     function transferFrom(address from, address to, uint256 tokenId) override  public {
         require(from != address(0) && to != address(0), "address or toAddress zero is not");
         require(tokenId != 0, "tokenId zero");
+        //必须是from的代币才可以
         require(from == _owners[tokenId], "owner of tokenId not match fromAddress ");
         require(_isApprovedOrOwner(from, msg.sender, tokenId), "not authrized");
 
@@ -236,7 +362,7 @@ contract ERC721 is  IERC721{
 
     //判断调用者拥有代币操作的权限
     function _isApprovedOrOwner(address owner ,address spender,uint256 tokenId) internal view  returns(bool) {
-        return owner == spender || _owners[tokenId] == spender || isApprovedForAll[owner][spender];
+        return owner == spender || _approves[tokenId] == spender || isApprovedForAll[owner][spender];
     }
 
     /**

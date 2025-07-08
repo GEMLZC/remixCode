@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "arr",
+						"type": "uint256[]"
+					}
+				],
+				"name": "optimizeGasUsage",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"optimizeGasUsage(uint256[])": {
+					"notice": "1. 使⽤上述所有燃⽓优化技术。 2. 计算数组中所有⼩于100的偶数的和。 3. 返回计算结果。"
+				}
+			},
+			"notice": "使⽤calldata代替memory：通过改变变量存储位置来减少燃⽓消耗。\u0001 循环内部变量优化：在循环开始前将状态变量加载到内存，循环结束后再更新状态变量。 表达式短路（Short\u0001Circuiting）：优化条件判断逻辑，避免不必要的计算。\u0001 循环增量简化：使⽤ ++i 代替 i + 1 来减少操作。 缓存数组⻓度：将数组⻓度存储在局部变量中，减少每次循环的计算量。 数组元素加载到内存：将频繁访问的数组元素预先加载到变量中。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/GasGolf.sol": "GasGolf"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/GasGolf.sol": {
+			"keccak256": "0xc72c6caf6c1aca92bef30962811c985814cca96245cea841e40940e4aed50eaf",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://9a122a207390041b490cb59b1142a52f3f8ab91b9c496e6432e0da0ae131a6cd",
+				"dweb:/ipfs/Qmf43pwEr69ciUaij7UBKep88smxVrbHvw8Zmuafv75BrL"
+			]
+		}
+	},
+	"version": 1
+}
