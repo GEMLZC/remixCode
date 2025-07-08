@@ -134,6 +134,122 @@ interface IERC721Receiver {
 
 
 
+contract ERC721_3 is  IERC721{
+    //记录某个地址拥有的代表
+    mapping(address => uint256) public override  balanceOf;
+    //代币的所有者
+    mapping(uint256 => address) public override  ownerOf;
+    //记录操作者是否拥有某个代表所有者的操作权限
+    mapping(address => mapping(address => bool)) public override isApprovedForAll;
+    //代币授权的地址记录
+    mapping(uint256 => address) public  _approves;
+
+
+    function supportsInterface(bytes4 interfaceId) override external pure  returns (bool){
+        return interfaceId == type(IERC721).interfaceId || interfaceId == type(IERC165).interfaceId;
+    }
+
+
+    /**
+        描述：安全地将代币从一个地址转移到另一个地址，调用时会检查接收者地址是否具备处理 ERC721 代币的能力
+        参数：
+        _from：当前代币的拥有者地址
+        _to：代币将要被转移至的目标地址
+        _tokenId：将要被转移的代币的 ID
+        data：额外的数据，可能会在调用中使用
+    */
+    function safeTransferFrom(address from, address to, uint256 tokenId) override external{
+        transferFrom(from,to,tokenId);
+        require(to.code.length == 0
+        || IERC721Receiver(to).onERC721Received(msg.sender,from,tokenId,"") == IERC721Receiver.onERC721Received.selector
+        , "safeTransferFrom fail");
+         //在代币被转移时触发
+        emit Transfer(from, to, tokenId);
+    }
+
+
+    
+     /**
+        描述：安全地将代币从一个地址转移到另一个地址，调用时会检查接收者地址是否具备处理 ERC721 代币的能力
+        参数：
+        _from：当前代币的拥有者地址
+        _to：代币将要被转移至的目标地址
+        _tokenId：将要被转移的代币的 ID
+        data：额外的数据，可能会在调用中使用
+    */
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) override external{
+        transferFrom(from,to,tokenId);
+        require(to.code.length == 0
+        || IERC721Receiver(to).onERC721Received(msg.sender,from,tokenId,data) == IERC721Receiver.onERC721Received.selector
+        , "safeTransferFrom fail");
+    }
+
+    /**
+        描述：将代币从一个地址转移到另一个地址，不检查接收者地址是否能处理 ERC721 代币
+        参数：
+        _from：当前代币的拥有者地址
+        _to：代币将要被转移至的目标地址
+        _tokenId：将要被转移的代币的 ID
+    */
+    function transferFrom(address from, address to, uint256 tokenId)  override public {
+        require(from != address(0) && to != address(0), "address or toAddress zero is not");
+        //代币必须是拥有者的才可以操作
+        require(ownerOf[tokenId] == from,  "ERC721: transfer caller is not 0 or ");
+        //检查转账的权限
+        require(msg.sender == from
+        || isApprovedForAll[from][msg.sender] 
+        || _approves[tokenId] == msg.sender
+        , "ERC721: transfer caller is not 0 or ");
+        balanceOf[from]--;
+        balanceOf[to]++;
+        ownerOf[tokenId] = to;
+        delete _approves[tokenId];
+          //在代币被转移时触发
+        emit Transfer(from, to, tokenId);
+    }
+
+    /**
+    描述：授权某个地址管理特定的ERC721代币
+    参数：
+    _approved：被授权的地址
+    _tokenId：代币的唯一识别 ID
+*/
+    function approve(address to, uint256 tokenId) override external{
+        require( to != address(0), "address or toAddress zero is not");
+       address owner = ownerOf[tokenId];
+        require(owner == msg.sender || isApprovedForAll[owner][msg.sender], "ERC721: approved caller is not owner nor approved for");
+        _approves[tokenId] = to;
+         emit Approval(msg.sender ,to , tokenId );
+    }
+
+    /**
+        描述：获取被授权管理特定代币的地址
+        参数：_tokenId：代币的唯一识别 ID
+        返回值：被授权的管理该代币的地址
+    */
+    function getApproved(uint256 tokenId) override external view returns (address operator){
+         require( tokenId != 0, "tokenId zero is not");
+         return _approves[tokenId];
+    }
+
+    /**
+        描述：将一个操作者地址设置为被批准或取消批准管理所有代币的权利
+        参数：
+        _operator：操作者的地址
+        _approved：批准或取消批准的标志
+    */
+    function setApprovalForAll(address operator, bool _approved) override external{
+         require( operator != address(0), "address or toAddress zero is not");
+         require(isApprovedForAll[msg.sender][operator], "operator alrder");
+         isApprovedForAll[msg.sender][operator] = _approved;
+          emit ApprovalForAll( msg.sender, operator ,_approved );
+    }
+
+
+}
+
+
+
 contract ERC721_2 is IERC721{
         //某个地址的代币
         mapping(address => uint256) public override balanceOf;
@@ -224,7 +340,8 @@ contract ERC721_2 is IERC721{
 */
     function approve(address to, uint256 tokenId) override external{
         require(_approves[tokenId] != to, "ERC721: approved is already set");
-        require(ownerOf[tokenId] == msg.sender , "ERC721: approved caller is not owner nor approved for");
+        address owner = ownerOf[tokenId];
+        require(owner == msg.sender || isApprovedForAll[owner][msg.sender], "ERC721: approved caller is not owner nor approved for");
         _approves[tokenId] = to;
         emit  Approval(msg.sender, to,tokenId);
     }
@@ -253,6 +370,13 @@ contract ERC721_2 is IERC721{
          emit ApprovalForAll(msg.sender, operator,  _approved);
     }
 }
+
+
+
+
+
+
+
 
 
 
