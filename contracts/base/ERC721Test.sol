@@ -144,6 +144,8 @@ contract ERC721_3 is  IERC721{
     //代币授权的地址记录
     mapping(uint256 => address) public  _approves;
 
+    event Log(address indexed _approvesAddr, address indexed sender);
+
 
     function supportsInterface(bytes4 interfaceId) override external pure  returns (bool){
         return interfaceId == type(IERC721).interfaceId || interfaceId == type(IERC165).interfaceId;
@@ -200,6 +202,7 @@ contract ERC721_3 is  IERC721{
         || isApprovedForAll[from][msg.sender] 
         || _approves[tokenId] == msg.sender
         , "ERC721: transfer caller is not 0 or ");
+        emit Log(_approves[tokenId], msg.sender);
         balanceOf[from]--;
         balanceOf[to]++;
         ownerOf[tokenId] = to;
