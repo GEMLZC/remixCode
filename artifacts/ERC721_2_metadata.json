@@ -369,11 +369,11 @@
 	},
 	"sources": {
 		"contracts/base/ERC721Test.sol": {
-			"keccak256": "0x0d78216883129822dd282ace1ba9560a2ae17886cedf55049befbe1e702f4f22",
+			"keccak256": "0xdfd8c4dfd274090a087bc1f22c6505826f5b91b9969dbcbc5365f0f50729d53a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://135639fcb5f87539c0b8fc53ae656f62941981e8682cf8411794e994fcf132db",
-				"dweb:/ipfs/QmQ2tKx6XPK6u2MMsjAdsfZYQKT7jcboeMm9Jc4hiMN3MQ"
+				"bzz-raw://5b7881bdb9a50444456b83ca21527cf1083c3cba853fde907d27a8151c207daa",
+				"dweb:/ipfs/QmYn6ytbqatJDXaQXy71vsnVbodBn5dMHTivvf4ECSojJZ"
 			]
 		}
 	},

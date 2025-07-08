@@ -246,6 +246,31 @@ contract ERC721_3 is  IERC721{
     }
 
 
+    /**
+        铸造代币
+        to:代币地址
+    */
+    function _mint(address to,uint256 tokenId) internal {
+        require(to != address(0), "address is 0");
+        balanceOf[to]++;
+        ownerOf[tokenId] = to;
+        emit Transfer(msg.sender, to, tokenId);
+    }
+
+    /**
+        销毁代币
+    */
+    function _burn(uint tokenId) internal {
+        address owner = ownerOf[tokenId];
+        require(owner != address(0), "address is 0");
+         balanceOf[owner]--;
+
+         //取消授权
+         delete _approves[tokenId];
+         //去除地址
+         delete ownerOf[tokenId];
+    }
+
 }
 
 
@@ -368,6 +393,31 @@ contract ERC721_2 is IERC721{
         require(operator != address(0), "operator address is 0 or not set");
         isApprovedForAll[msg.sender][operator] = _approved;
          emit ApprovalForAll(msg.sender, operator,  _approved);
+    }
+
+    /**
+        铸造代币
+        to:代币地址
+    */
+    function _mint(address to,uint256 tokenId) internal {
+        require(to != address(0), "address is 0");
+        balanceOf[to]++;
+        ownerOf[tokenId] = to;
+        emit Transfer(msg.sender, to, tokenId);
+    }
+
+    /**
+        销毁代币
+    */
+    function _burn(uint tokenId) internal {
+        address owner = ownerOf[tokenId];
+        require(owner != address(0), "address is 0");
+         balanceOf[owner]--;
+
+         //取消授权
+         delete _approves[tokenId];
+         //去除地址
+         delete ownerOf[tokenId];
     }
 }
 
@@ -547,12 +597,12 @@ contract ERC721 is  IERC721{
 }
 
 
-contract MyNFT is ERC721 {
+contract MyNFT is ERC721_3 {
     function mint(address to, uint tokenId) external {
         _mint(to, tokenId);
     }
     function burn(uint tokenId) external {
-        require(msg.sender == _owners[tokenId], "not owner");
+        require(msg.sender == ownerOf[tokenId], "not owner");
         _burn(tokenId);
     }
 
