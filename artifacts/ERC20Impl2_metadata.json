@@ -59,12 +59,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "owner",
+						"name": "",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "spender",
+						"name": "",
 						"type": "address"
 					}
 				],
@@ -107,7 +107,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "account",
+						"name": "",
 						"type": "address"
 					}
 				],
@@ -192,23 +192,25 @@
 		"devdoc": {
 			"kind": "dev",
 			"methods": {
-				"allowance(address,address)": {
-					"details": "返回owner账⼾授权给spender账⼾的额度，默认为0。 当{approve} 或 {transferFrom} 被调⽤时，allowance会改变."
-				},
 				"approve(address,uint256)": {
 					"details": "调⽤者账⼾给spender账⼾授权 amount数量代币。 如果成功，返回 true. 释放 {Approval} 事件."
-				},
-				"balanceOf(address)": {
-					"details": "返回账⼾account所持有的代币数."
-				},
-				"totalSupply()": {
-					"details": "返回代币总供给."
 				},
 				"transfer(address,uint256)": {
 					"details": "转账 amount 单位代币，从调⽤者账⼾到另⼀账⼾ to. 如果成功，返回 true. 释放 {Transfer} 事件."
 				},
 				"transferFrom(address,address,uint256)": {
 					"details": "通过授权机制，从from账⼾向to账⼾转账amount数量代币。转账的部分会从调⽤者的 allowance中扣除。 如果成功，返回 true. 释放 {Transfer} 事件."
+				}
+			},
+			"stateVariables": {
+				"allowance": {
+					"details": "返回owner账⼾授权给spender账⼾的额度，默认为0。 当{approve} 或 {transferFrom} 被调⽤时，allowance会改变."
+				},
+				"balanceOf": {
+					"details": "返回账⼾account所持有的代币数."
+				},
+				"totalSupply": {
+					"details": "返回代币总供给."
 				}
 			},
 			"version": 1
@@ -221,7 +223,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/base/ERC20Test.sol": "IERC20"
+			"contracts/base/ERC20Test.sol": "ERC20Impl2"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},

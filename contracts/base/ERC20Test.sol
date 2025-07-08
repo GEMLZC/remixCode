@@ -54,6 +54,91 @@ interface IERC20 {
 }
 
 
+contract ERC20Impl2 is IERC20 {
+        //代币总供给
+        uint256 public override  totalSupply;
+        //account所持有的代币数.
+        mapping(address => uint256) public override balanceOf;
+        //owner账⼾授权给spender账⼾的额度
+        mapping(address => mapping(address => uint256)) public override  allowance;
+
+        
+        modifier checkAmountEnough(uint256 amount){
+            require(balanceOf[msg.sender] >= amount, "amount is not enough");
+            _;
+        }
+
+
+        /**
+        * @dev 转账 amount 单位代币，从调⽤者账⼾到另⼀账⼾ to.
+        *
+        * 如果成功，返回 true.
+        *
+        * 释放 {Transfer} 事件.
+        */
+        function transfer(address recipient, uint256 amount) checkAmountEnough(amount) override external returns(bool){
+                        balanceOf[msg.sender] -= amount;
+                        balanceOf[recipient] += amount;
+                        emit Transfer(msg.sender,  recipient, amount);
+                        return true;
+        }
+
+        
+        /**
+        * @dev 调⽤者账⼾给spender账⼾授权 amount数量代币。
+        *
+        * 如果成功，返回 true.
+        *
+        * 释放 {Approval} 事件.
+        */
+        function approve(address spender, uint256 amount) checkAmountEnough(amount) override external returns (bool){
+            allowance[msg.sender][spender] = amount;
+            emit  Approval(msg.sender,  spender, amount);
+            return true;
+        }
+
+
+        /**
+        * @dev 通过授权机制，从from账⼾向to账⼾转账amount数量代币。转账的部分会从调⽤者的
+            allowance中扣除。
+        *
+        * 如果成功，返回 true.
+        *
+        * 释放 {Transfer} 事件.
+        */
+        function transferFrom(address sender, address recipient, uint256 amount) override external returns (bool){
+            require(allowance[sender][msg.sender] >= amount, "amount is not enough");
+            require(balanceOf[sender] >= amount, "amount is not enough");
+            allowance[sender][msg.sender] -= amount;
+            balanceOf[sender] -=amount;
+            balanceOf[recipient] +=amount;
+            emit Transfer(sender,  recipient, amount);
+            return true;
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 contract ERC20Impl is IERC20 {
         // 代币总供应
         uint public override totalSupply;
@@ -93,7 +178,7 @@ contract ERC20Impl is IERC20 {
         * @dev 调⽤者账⼾给spender账⼾授权 amount数量代币。 (allowance[msg.sender][spender] 是从授权者角度调用的，spender是被授权者，msg.sender是授权者)
         *
         * 如果成功，返回 true.
-        *
+        * spender：被授权者地址
         * 释放 {Approval} 事件.
         */
         function approve(address spender, uint256 amount) checkBalanceEnough(amount) override external returns (bool){
@@ -108,7 +193,8 @@ contract ERC20Impl is IERC20 {
             allowance中扣除。(allowance[from][msg.sender] 是从被授权者角度调用的，from是授权者，msg.sender是被授权者)
         *
         * 如果成功，返回 true.
-        *
+        *from :授权者地址
+        to:t被授权者
         * 释放 {Transfer} 事件.
         */
         function transferFrom(address from, address to, uint256 amount) override external returns (bool){

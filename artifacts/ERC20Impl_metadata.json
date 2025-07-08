@@ -232,13 +232,13 @@
 			"kind": "dev",
 			"methods": {
 				"approve(address,uint256)": {
-					"details": "调⽤者账⼾给spender账⼾授权 amount数量代币。 (allowance[msg.sender][spender] 是从授权者角度调用的，spender是被授权者，msg.sender是授权者) 如果成功，返回 true. 释放 {Approval} 事件."
+					"details": "调⽤者账⼾给spender账⼾授权 amount数量代币。 (allowance[msg.sender][spender] 是从授权者角度调用的，spender是被授权者，msg.sender是授权者) 如果成功，返回 true. spender：被授权者地址 释放 {Approval} 事件."
 				},
 				"transfer(address,uint256)": {
 					"details": "转账 amount 单位代币，从调⽤者账⼾到另⼀账⼾ to. 如果成功，返回 true. 释放 {Transfer} 事件."
 				},
 				"transferFrom(address,address,uint256)": {
-					"details": "通过授权机制，从from账⼾向to账⼾转账amount数量代币。转账的部分会从调⽤者的 allowance中扣除。(allowance[from][msg.sender] 是从被授权者角度调用的，from是授权者，msg.sender是被授权者) 如果成功，返回 true. 释放 {Transfer} 事件."
+					"details": "通过授权机制，从from账⼾向to账⼾转账amount数量代币。转账的部分会从调⽤者的 allowance中扣除。(allowance[from][msg.sender] 是从被授权者角度调用的，from是授权者，msg.sender是被授权者) 如果成功，返回 true. from :授权者地址 to:t被授权者 释放 {Transfer} 事件."
 				}
 			},
 			"stateVariables": {
@@ -277,11 +277,11 @@
 	},
 	"sources": {
 		"contracts/base/ERC20Test.sol": {
-			"keccak256": "0x29b0d24690b6c933de99096fe1ce0b6fb549bcb054751863cb5ba04ce496f074",
+			"keccak256": "0x57fcc1ad5c43f0079ca6a1f7fc57c15c314ad69942b13c95f3ae92ba205744f1",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://dd077e0cf60d6656f93d3ccb8582f0f4f5ade7057fa54da1e9568a8077e333cb",
-				"dweb:/ipfs/QmdLxuULrpk2bsE82UJ4apze9vjVLVScg7rEkjug1VyiF2"
+				"bzz-raw://ec2b35461e902cf37eb241658a7a59b0a5ddc2d1b4e6b6ac73bd4b88ebb43a43",
+				"dweb:/ipfs/QmV3i42DpAQjbpQxpFRGzaZ9v5hMiVg3EBZy7zKEsanafx"
 			]
 		}
 	},
