@@ -1,0 +1,187 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_token",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "countAddrAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "target",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "_startTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "second",
+						"type": "uint32"
+					}
+				],
+				"name": "createCrowdFund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "crowdInfoNum",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "targetFund",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "roundNumber",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "startStatus",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "endStatus",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "founder",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "no",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/CrowdFund.sol": "CrowdFund"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/CrowdFund.sol": {
+			"keccak256": "0x38dc9a2fde711a485f1ab0ba094f4cef17c8df1b0e6412332dade45fcbe948b7",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://c4c897e8ea0be3bd961598b1e2c7d6834f5a8d4c89a2f084768f247b66a42c61",
+				"dweb:/ipfs/QmPwaYpG99sNjJ9Ngo7b5hvEK4TqKidDsP8U7xLPrCU4Dd"
+			]
+		}
+	},
+	"version": 1
+}

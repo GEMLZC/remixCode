@@ -32,9 +32,9 @@ contract EnglishAuction {
     //卖家地址
     address payable public immutable seller; 
     //买家地址
-    address private buyAddress;  
+    address public  buyAddress;  
     //买家出价
-    uint private buyPrice;
+    uint public buyPrice;
     //起拍价
     uint public startPrice;
     //开始时间
@@ -43,7 +43,7 @@ contract EnglishAuction {
     //结束时间
     uint public endTime;
     //拍卖持续时间
-    uint public duration = 60; 
+    uint public duration = 120; 
     //未成功竞拍的买家退款余额
     mapping(address => uint) public refundAmount;
     //拍卖状态（开始、结束）
@@ -69,6 +69,7 @@ contract EnglishAuction {
     // 卖家发起拍卖
     function start() external {
         require(msg.sender == seller, "Must be seller");
+        require(!startState, "starting");
         startState = true;
         startTime = block.timestamp;
         endTime = startTime + duration;
@@ -91,7 +92,6 @@ contract EnglishAuction {
     //提款（买⽅）
     function withdraw() external {
         require(!startState, "starting");
-        require(block.timestamp > endTime, "The auction has ended");
         uint _refundAmount = refundAmount[msg.sender];
         if(_refundAmount != 0){
             payable(msg.sender).transfer(_refundAmount);
