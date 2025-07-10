@@ -38,6 +38,8 @@ contract CrowdFund {
         uint32  endTime;
         //目标资金
         uint targetFund;
+        //已筹集的资金
+        uint pledged;
         //第几轮众筹
         uint  roundNumber;
         //是否开始
@@ -60,6 +62,9 @@ contract CrowdFund {
     event CreateCrowdFund(address founder, uint32 _startTime,uint32 _endTime,uint target,uint no); 
     event Cancel(uint no);
     event Withdraw(uint no,uint amount);
+    event Donate(uint _no,address addr,uint amount);
+    event BackDonate(uint _no,uint amount,address addr);
+    event Refund(uint _no,uint amount,address addr);
 
     constructor(address _token) {
        token = IERC20(_token);
@@ -80,7 +85,8 @@ contract CrowdFund {
             targetFund:target,
             roundNumber:no,
             startStatus:true,
-            endStatus:false
+            endStatus:false,
+            pledged:0
             }
         );
        emit CreateCrowdFund(msg.sender,_startTime,_endTime,target,no);      
@@ -95,6 +101,7 @@ contract CrowdFund {
         , "only start time cancel");
         crowdInfo.startStatus = false;
         crowdInfo.endStatus = true;
+        delete crowdInfoNum[_no];
         emit Cancel(_no);
     }
 
@@ -107,14 +114,34 @@ contract CrowdFund {
         , "donate time error");
         require(amount > 0 , "donate value must ge 0");
 
-        crowdInfo.targetFund += amount;
+        crowdInfo.pledged += amount;
         countAddrAmount[crowdInfo.roundNumber][msg.sender] += amount;
-        emit donate(_no,msg.sender,amount);
+        emit Donate(_no,msg.sender,amount);
     }
         
     //撤回认捐（⽀持者）
+    function backDonate(uint _no,uint amount) external{
+        CrowdInfo storage crowdInfo = crowdInfoNum[_no];
+       
+         require(block.timestamp <= crowdInfo.endTime, "ended");
+         crowdInfo.pledged -= amount;
+         countAddrAmount[_no][msg.sender] -= amount;
+         token.transfer(msg.sender, amount);
+         emit BackDonate(_no,amount,msg.sender);
+    }
    
     //失败退款（⽀持者）
+    function refund(uint _no) external {
+         CrowdInfo storage crowdInfo = crowdInfoNum[_no];
+         require(block.timestamp > crowdInfo.endTime, "not ended");
+         
+         require(crowdInfo.pledged < crowdInfo.targetFund, "pledged >= goal");
+         uint amount = countAddrAmount[_no][msg.sender]; 
+         countAddrAmount[_no][msg.sender] = 0;
+         token.transfer(msg.sender, amount);
+         crowdInfo.pledged--;
+         emit Refund(_no,amount,msg.sender);
+    }
 
 
     //提取资⾦（发起者）
@@ -124,7 +151,7 @@ contract CrowdFund {
         require(block.timestamp > crowdInfo.endTime , "end time error ");
         uint _amount = crowdInfo.targetFund;
         require(_amount >= amount, "not enough funds error ");
-        crowdInfo.targetFund -= amount;
+        crowdInfo.pledged -= amount;
         token.transfer(founder, amount);
         emit Withdraw(_no,amount);
     }
