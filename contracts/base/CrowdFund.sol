@@ -38,6 +38,8 @@ contract CrowdFund {
         uint32  endTime;
         //目标资金
         uint targetFund;
+        //已筹集的资金
+        uint pledged;
         //第几轮众筹
         uint  roundNumber;
         //是否开始
@@ -60,6 +62,9 @@ contract CrowdFund {
     event CreateCrowdFund(address founder, uint32 _startTime,uint32 _endTime,uint target,uint no); 
     event Cancel(uint no);
     event Withdraw(uint no,uint amount);
+    event Donate(uint _no,address addr,uint amount);
+    event BackDonate(uint _no,uint amount,address addr);
+    event Refund(uint _no,uint amount,address addr);
 
     constructor(address _token) {
        token = IERC20(_token);
@@ -80,7 +85,8 @@ contract CrowdFund {
             targetFund:target,
             roundNumber:no,
             startStatus:true,
-            endStatus:false
+            endStatus:false,
+            pledged:0
             }
         );
        emit CreateCrowdFund(msg.sender,_startTime,_endTime,target,no);      
@@ -91,10 +97,11 @@ contract CrowdFund {
         CrowdInfo storage crowdInfo = crowdInfoNum[_no];
         require(founder == msg.sender, "only founder cancel");
         require(crowdInfo.startStatus, "crowd end");
-        require(block.timestamp >= crowdInfo.startTime && block.timestamp <= crowdInfo.endTime 
+        require(block.timestamp < crowdInfo.startTime && block.timestamp <= crowdInfo.endTime 
         , "only start time cancel");
         crowdInfo.startStatus = false;
         crowdInfo.endStatus = true;
+        delete crowdInfoNum[_no];
         emit Cancel(_no);
     }
 
@@ -107,27 +114,45 @@ contract CrowdFund {
         , "donate time error");
         require(amount > 0 , "donate value must ge 0");
 
-        crowdInfo.targetFund += amount;
+        crowdInfo.pledged += amount;
         countAddrAmount[crowdInfo.roundNumber][msg.sender] += amount;
-        emit donate(_no,msg.sender,amount);
+        emit Donate(_no,msg.sender,amount);
     }
-        
-    //撤回认捐（⽀持者）
-   
-    //失败退款（⽀持者）
 
 
-    //提取资⾦（发起者）
+    //提取资⾦（发起者）  注意判断提取资金的时机是与失败退款的判断逻辑是相反的，资金池达到目标资金才可以提取；失败退款只能未达到目标资金才能提取
     function withdraw(uint _no,uint amount) external {
         CrowdInfo storage crowdInfo = crowdInfoNum[_no];
         require(founder == msg.sender, "only founder withdraw");
         require(block.timestamp > crowdInfo.endTime , "end time error ");
+        require(crowdInfo.pledged >= crowdInfo.targetFund, "pledged < goal");
         uint _amount = crowdInfo.targetFund;
         require(_amount >= amount, "not enough funds error ");
-        crowdInfo.targetFund -= amount;
+        crowdInfo.pledged -= amount;
         token.transfer(founder, amount);
         emit Withdraw(_no,amount);
     }
+        
+    //撤回认捐（⽀持者）
+    function backDonate(uint _no,uint amount) external{
+        CrowdInfo storage crowdInfo = crowdInfoNum[_no];
+         require(block.timestamp <= crowdInfo.endTime, "ended");
+         crowdInfo.pledged -= amount;
+         countAddrAmount[_no][msg.sender] -= amount;
+         token.transfer(msg.sender, amount);
+         emit BackDonate(_no,amount,msg.sender);
+    }
+   
 
+    //失败退款（⽀持者）  此处没有扣减资金池余额因为活动已结束，需要保存历史记录，并且是在资金池没有达到目标资金时调用的
+    function refund(uint _no) external {
+         CrowdInfo storage crowdInfo = crowdInfoNum[_no];
+         require(block.timestamp > crowdInfo.endTime, "not ended");
+         
+         require(crowdInfo.pledged < crowdInfo.targetFund, "pledged >= goal");
+         uint amount = countAddrAmount[_no][msg.sender]; 
+         countAddrAmount[_no][msg.sender] = 0;
+         token.transfer(msg.sender, amount);
+         emit Refund(_no,amount,msg.sender);
+    }
 }
-
