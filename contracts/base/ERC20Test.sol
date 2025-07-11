@@ -115,6 +115,20 @@ contract ERC20Impl2 is IERC20 {
             emit Transfer(sender,  recipient, amount);
             return true;
         }
+
+
+        function mint(uint amount) external {
+            balanceOf[msg.sender] += amount;
+            totalSupply += amount;
+            emit Transfer(address(0), msg.sender, amount);
+        }
+
+
+        function burn(uint amount) external {
+            balanceOf[msg.sender] -= amount;
+            totalSupply -= amount;
+            emit Transfer(msg.sender, address(0), amount);
+        }
 }
 
 

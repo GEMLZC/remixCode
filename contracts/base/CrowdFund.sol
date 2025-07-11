@@ -22,8 +22,8 @@ pragma solidity 0.8.4;
 */
 
 interface IERC20 {
-    function transfer(address, uint256) external returns (bool);
-    function transferFrom(address, address, uint256) external returns (bool);
+    function transfer(address recipient, uint256 amount) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 }
 
 //多轮众筹
@@ -73,7 +73,7 @@ contract CrowdFund {
 
     //发起众筹（发起者）
     function createCrowdFund(uint256 target, uint32  _startTime,uint32 second) external {
-        require(_startTime > block.timestamp +20, "create crowdfund time error");
+        require(_startTime > block.timestamp, "create crowdfund time error");
         require(target > 0, " amount must ge 0");
         uint32 _endTime = uint32(block.timestamp + second);
         require(_endTime  > block.timestamp, " second error");
@@ -116,21 +116,21 @@ contract CrowdFund {
 
         crowdInfo.pledged += amount;
         countAddrAmount[crowdInfo.roundNumber][msg.sender] += amount;
+        token.transferFrom(msg.sender,address(this),amount);
         emit Donate(_no,msg.sender,amount);
     }
 
 
     //提取资⾦（发起者）  注意判断提取资金的时机是与失败退款的判断逻辑是相反的，资金池达到目标资金才可以提取；失败退款只能未达到目标资金才能提取
-    function withdraw(uint _no,uint amount) external {
+    function withdraw(uint _no) external {
         CrowdInfo storage crowdInfo = crowdInfoNum[_no];
         require(founder == msg.sender, "only founder withdraw");
         require(block.timestamp > crowdInfo.endTime , "end time error ");
         require(crowdInfo.pledged >= crowdInfo.targetFund, "pledged < goal");
-        uint _amount = crowdInfo.targetFund;
-        require(_amount >= amount, "not enough funds error ");
-        crowdInfo.pledged -= amount;
-        token.transfer(founder, amount);
-        emit Withdraw(_no,amount);
+        uint _amount = crowdInfo.pledged;
+        crowdInfo.pledged -= _amount;
+        token.transfer(founder, _amount);
+        emit Withdraw(_no,_amount);
     }
         
     //撤回认捐（⽀持者）
