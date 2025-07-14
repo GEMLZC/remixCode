@@ -1,0 +1,66 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "Log",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "deploy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/base/SimpleBytecodeContract.sol": "Factory"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/base/SimpleBytecodeContract.sol": {
+			"keccak256": "0xceeae9b0ab6736ca4c439b1542c23744d227b8c3fb1b186b8ea42ae95cddcceb",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5162a43e6409cb2f89e6c0eaec6610a43c6a140b8579b67722d1572631d472d4",
+				"dweb:/ipfs/QmTa1DcUZA9zsVRg4zpzrPugNTt3tqQyvfzkwdUMgshyFr"
+			]
+		}
+	},
+	"version": 1
+}
