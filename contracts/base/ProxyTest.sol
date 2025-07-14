@@ -78,7 +78,7 @@ contract Proxy {
     }
 
     function upgradeTo(address _newImplementation) external ifAdmin{
-        require(msg.sender == getAdmin(), "Only admin can upgrade");
+        require(_newImplementation.code.length > 0, "not a contract");
         setImplementation(_newImplementation);
     }
     fallback() external payable {
