@@ -6,6 +6,136 @@
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -61,19 +191,37 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"allowance(address,address)": {
+					"details": "返回owner账⼾授权给spender账⼾的额度，默认为0。 当{approve} 或 {transferFrom} 被调⽤时，allowance会改变."
+				},
+				"approve(address,uint256)": {
+					"details": "调⽤者账⼾给spender账⼾授权 amount数量代币。 如果成功，返回 true. 释放 {Approval} 事件."
+				},
+				"balanceOf(address)": {
+					"details": "返回账⼾account所持有的代币数."
+				},
+				"totalSupply()": {
+					"details": "返回代币总供给."
+				},
+				"transfer(address,uint256)": {
+					"details": "转账 amount 单位代币，从调⽤者账⼾到另⼀账⼾ to. 如果成功，返回 true. 释放 {Transfer} 事件."
+				},
+				"transferFrom(address,address,uint256)": {
+					"details": "通过授权机制，从from账⼾向to账⼾转账amount数量代币。转账的部分会从调⽤者的 allowance中扣除。 如果成功，返回 true. 释放 {Transfer} 事件."
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
-			"notice": "众筹 是⼀种资⾦募集的⽅式，发起者通过某个公开平台向⼤众募集资⾦，⽬标是⽤这些资⾦ 启动或推动某个项⽬、产品或社会事业。随着Web3技术的兴起，智能合约去中⼼化的⽅式的 使得众筹活动更加公正和⾼效，资⾦流动更加安全与透明。 实现⼀个众筹平台合约： ⻆⾊ 发起者 ⽀持者 功能 发起众筹（发起者） 取消众筹（发起者） 认捐资⾦（⽀持者） 撤回认捐（⽀持者） 提取资⾦（发起者） 失败退款（⽀持者）",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/base/CrowdFund.sol": "IERC20"
+			"contracts/base/ERC20Test.sol": "IERC20"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -87,12 +235,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/base/CrowdFund.sol": {
-			"keccak256": "0xa7571375c243478f152e89ff5437f6e1c44ade0f11a31dec021f9a3dbd34d028",
+		"contracts/base/ERC20Test.sol": {
+			"keccak256": "0x26234d8509ab8675cf04c561147e2526f95543d65ef06910cbbba74ee9ec4fd0",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://fb5ba158303a440bf2410d935451fcbda6120212eb05f7726ddc15951fcc20a7",
-				"dweb:/ipfs/QmX9d6sKFzewcuRwcGD5Ukb1WNQAAfH847GXiBVQyyCvUd"
+				"bzz-raw://f8fa2d8887ce48ce7b6ce0f5077259e6ba53da5bc7193a94edc6e31ec4fcfdc2",
+				"dweb:/ipfs/QmdE5BNudneAmyBDTBqVeeyDP8ddjNxBAHXQ5YMMrEGiff"
 			]
 		}
 	},
