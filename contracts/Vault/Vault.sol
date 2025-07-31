@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.4;
-
 /***
     金库合约，用于存储金库
 

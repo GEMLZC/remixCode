@@ -221,7 +221,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/base/ERC20Test.sol": "IERC20"
+			"contracts/CSAMM/CSAMM.sol": "IERC20"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -235,12 +235,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/base/ERC20Test.sol": {
-			"keccak256": "0x26234d8509ab8675cf04c561147e2526f95543d65ef06910cbbba74ee9ec4fd0",
+		"contracts/CSAMM/CSAMM.sol": {
+			"keccak256": "0x629035cd841298e1ec973ac9ceb9c22e162028d9d4f02fef83ad22ba85936481",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f8fa2d8887ce48ce7b6ce0f5077259e6ba53da5bc7193a94edc6e31ec4fcfdc2",
-				"dweb:/ipfs/QmdE5BNudneAmyBDTBqVeeyDP8ddjNxBAHXQ5YMMrEGiff"
+				"bzz-raw://4d160ff4812dc0d356e6b1f7fb33c369bd043620a492affba241c88e5b677ed6",
+				"dweb:/ipfs/QmTZeXCvw2Yf366dXda9kXtHqxCH5Hvztwb951ptyJHLSB"
 			]
 		}
 	},
