@@ -122,7 +122,7 @@ contract CSAMM{
         if (totalBlance > 0){
            share = ((d0 + d1) * totalBlance) / (reserve0 + reserve1);
         }else{
-            share = amount0 + amount1;
+            share = d0 + d1;
         }
          
         _mint(msg.sender, share);
@@ -166,6 +166,6 @@ contract CSAMM{
         (uint256 res0, uint256 res1) = isToken0 ? 
         (resIn + amountIn,resOut - amountInWithFee) : (resOut - amountInWithFee,resIn + amountIn);
         _update(res0, res1);
-        tokenOut.transfer(msg.sender, amountInWithFee);
+        tokenOut.transfer(msg.sender, amountInWi   thFee);
     }
 }
