@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.30+commit.73712a01"
 	},
 	"language": "Solidity",
 	"output": {
@@ -251,7 +251,7 @@
 		"compilationTarget": {
 			"contracts/base/ERC20Test.sol": "ERC20Impl2"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "prague",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -264,11 +264,11 @@
 	},
 	"sources": {
 		"contracts/base/ERC20Test.sol": {
-			"keccak256": "0x26234d8509ab8675cf04c561147e2526f95543d65ef06910cbbba74ee9ec4fd0",
+			"keccak256": "0x9390a374e1256f479fba588c686ca3e9c716823189f1d7a6dc3dd481103d7e6b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f8fa2d8887ce48ce7b6ce0f5077259e6ba53da5bc7193a94edc6e31ec4fcfdc2",
-				"dweb:/ipfs/QmdE5BNudneAmyBDTBqVeeyDP8ddjNxBAHXQ5YMMrEGiff"
+				"bzz-raw://e4b058ac06c7fffcd4c9bb63b8d163ae51adbd039a82162cc3a19ffde71b51cb",
+				"dweb:/ipfs/Qmf7b6XpKrxfjfwHQFCJQiTh1FrL8hDvPYbDP85Ygntz1P"
 			]
 		}
 	},

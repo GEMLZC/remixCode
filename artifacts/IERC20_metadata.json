@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.30+commit.73712a01"
 	},
 	"language": "Solidity",
 	"output": {
@@ -221,9 +221,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CSAMM/CSAMM.sol": "IERC20"
+			"contracts/base/ERC20Test.sol": "IERC20"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "prague",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -235,12 +235,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/CSAMM/CSAMM.sol": {
-			"keccak256": "0x629035cd841298e1ec973ac9ceb9c22e162028d9d4f02fef83ad22ba85936481",
+		"contracts/base/ERC20Test.sol": {
+			"keccak256": "0x9390a374e1256f479fba588c686ca3e9c716823189f1d7a6dc3dd481103d7e6b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://4d160ff4812dc0d356e6b1f7fb33c369bd043620a492affba241c88e5b677ed6",
-				"dweb:/ipfs/QmTZeXCvw2Yf366dXda9kXtHqxCH5Hvztwb951ptyJHLSB"
+				"bzz-raw://e4b058ac06c7fffcd4c9bb63b8d163ae51adbd039a82162cc3a19ffde71b51cb",
+				"dweb:/ipfs/Qmf7b6XpKrxfjfwHQFCJQiTh1FrL8hDvPYbDP85Ygntz1P"
 			]
 		}
 	},
